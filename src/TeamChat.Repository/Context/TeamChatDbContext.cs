@@ -9,13 +9,9 @@ namespace TeamChat.Repository.Context
 {
     public class TeamChatDbContext : DbContext
     {
-        public TeamChatDbContext(DbContextOptions options) : base(options)
-        {
-        }
+        public TeamChatDbContext(DbContextOptions options) : base(options) { }
 
-        protected TeamChatDbContext()
-        {
-        }
+        protected TeamChatDbContext() { }
 
         public DbSet<User> Users { get; set; }
 

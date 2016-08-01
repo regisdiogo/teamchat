@@ -17,7 +17,8 @@
     "TeamChat.Core": "1.0.0-*",
     "TeamChat.Repository": "1.0.0-*",
     "TeamChat.Service": "1.0.0-*",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "AutoMapper": "5.0.2"
   },
 
   "tools": {

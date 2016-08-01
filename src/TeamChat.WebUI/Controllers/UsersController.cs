@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamChat.Core.Interfaces.Service;
 using TeamChat.Core.Model;
+using TeamChat.WebUI.Model;
+using AutoMapper;
 
 namespace TeamChat.WebUI.Controllers
 {
@@ -19,16 +21,10 @@ namespace TeamChat.WebUI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return _userService.List();
-        }
+        public IEnumerable<UserDTO> Get() => Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(_userService.List());
 
         [HttpGet("{id}")]
-        public User Get(int id)
-        {
-            return _userService.FindById(id);
-        }
+        public UserDTO Get(int id) => Mapper.Map<UserDTO>(_userService.FindById(id));
 
         [HttpPost]
         public void Post([FromBody]User user)

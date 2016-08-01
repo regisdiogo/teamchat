@@ -13,6 +13,9 @@ using TeamChat.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using TeamChat.Core.Interfaces.Service;
 using TeamChat.Service;
+using AutoMapper;
+using TeamChat.Core.Model;
+using TeamChat.WebUI.Model;
 
 namespace TeamChat.WebUI
 {
@@ -26,6 +29,11 @@ namespace TeamChat.WebUI
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<User, UserDTO>();
+            });
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -43,7 +51,6 @@ namespace TeamChat.WebUI
 
             // Registering Services
             services.AddScoped<IUserService, UserService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
